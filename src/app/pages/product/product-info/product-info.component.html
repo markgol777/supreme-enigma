@@ -1,0 +1,121 @@
+<div class="container" 
+  *ngIf="currentProduct">
+  <nav class="breadcrumbs">
+    <a [routerLink]="[ '/' ]" class="breadcrumbs__link">Tomatina</a>
+    <a [routerLink]="[ '/product/'+currentProduct.category.path ]" class="breadcrumbs__link">{{ currentProduct.category.name }}</a>
+    <span class="breadcrumbs__span">{{ currentProduct.name }}</span>
+  </nav>
+
+  <section class="section">
+    <div class="card">
+
+      <div class="card__img-div">
+        <div class="card__icons">
+          <button 
+            type="button" 
+            (click)="addToFavorite(currentProduct)">
+            <svg width="22" height="19" 
+              class="card__heart" 
+              [ngClass]="{'card__favorite': isFavorite(currentProduct.id)}">
+              <use href="../../../../assets/images/icon_sprite_products.svg#heart"></use>
+            </svg>
+          </button>
+        </div>
+        <img [src]="currentProduct.imagePath" [alt]="currentProduct.name" class="card__img">
+      </div>
+
+      <div class="card__text">
+        <span class="card__weight">{{ currentProduct.weight }}</span>
+        <h1 class="title1">{{ currentProduct.name }}</h1>
+        <p class="paragraph">{{ currentProduct.description }}</p>
+        <p class="paragraph">
+          *Містить алергени: 
+          {{ currentProduct.allergens }}
+        </p>
+        <p class="paragraph card__calories">
+          Харчова цінність: 
+          <b>{{ currentProduct.calories }}</b>
+           ккал
+        </p>
+
+        <div class="info">
+          <p class="info__header">
+            Харчова цінність страви: 
+            <span class="info__number">{{ currentProduct.calories }}</span>
+             ккал
+          </p>
+          <div class="info__text">
+            <p class="info__p">
+              <svg width="17" height="17">
+                <use href="../../../assets/images/icon_sprite_products.svg#proteins"></use>
+              </svg>
+              <span>
+                Білки
+                <span class="info__number">{{ currentProduct.proteins }}</span>
+                 г;
+              </span>
+            </p>
+            <p class="info__p">
+              <svg width="17" height="19">
+                <use href="../../../assets/images/icon_sprite_products.svg#fats"></use>
+              </svg>
+              <span>
+                Жири
+                <span class="info__number">{{ currentProduct.fats }}</span>
+                 г;
+              </span>
+            </p>
+            <p class="info__p">
+              <svg width="18" height="19">
+                <use href="../../../assets/images/icon_sprite_products.svg#carbohydrates"></use>
+              </svg>
+              <span>
+                Вуглеводи
+                <span class="info__number">{{ currentProduct.carbohydrates }}</span>
+                 г;
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="card__action">
+          <div class="card__row">
+            <div>
+              <button 
+                class="btn-milk btn-plus" 
+                (click)="changeCount(currentProduct, false)"
+              >-</button>
+              <input 
+                type="text" 
+                class="card__count" 
+                [value]="currentProduct.count" 
+                readonly
+              >
+              <button 
+                class="btn-milk btn-plus" 
+                (click)="changeCount(currentProduct, true)"
+              >+</button>
+            </div>
+            <p class="card__price">
+              <b>{{ currentProduct.price }}</b>
+               грн
+            </p>
+          </div>
+          <div class="card__row">
+            <button 
+              class="btn-green" 
+              (click)="addToBasket(currentProduct)">Замовити
+            </button>
+            <button 
+              class="btn-white" 
+              (click)="fastOrder(currentProduct)">Швидке замовлення
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</div>

@@ -1,0 +1,163 @@
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  @include screen-1280 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include screen-1024 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include screen-600 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cards .card {
+  padding: 15px;
+  transition: all .3s;
+  position: relative;
+  &:hover {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  }
+  &__icons {
+    width: 22px;
+    height: 60px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+  }
+  &__img-div {
+    width: 100%;
+    padding: 5px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  &__img {
+    width: 100%;
+    transition: all .3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__order-div {
+    width: 100%;
+    padding-top: 80px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, white 100%);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+  }
+  &:hover &__order-div {
+    padding-bottom: 15px;
+    opacity: 1;
+    visibility: visible;
+  }
+  &__order-btn {
+    padding: 15px;
+    color: $green;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    &:hover {
+      color: $white;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+  }
+  .title6 {
+    height: 50px;
+    font-size: 18px;
+    transition: 0.3s;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    @include screen-480 {
+        font-size: 16px;
+    }
+    &:hover {
+      color: $green;
+    }
+  }
+  &__price {
+    color: $text-bold;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .paragraph {
+    min-height: 72px;
+    line-height: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &__actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn-green {
+    height: 44px;
+    padding: 10px 15px;
+    @include screen-1280 {
+      font-size: 12px;
+    }
+  }
+}
+
+.info {
+  position: relative;
+  &__btn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    padding: 0 6px;
+    background-color: $green;
+    border: 1px solid $green2;
+    border-radius: 50%;
+  }
+  &__svg {
+    position: relative;
+    top: -1px;
+  }
+  &__block {
+    width: 200px;
+    padding: 10px;
+    background-color: $milk;
+    border-radius: 6px;
+    position: absolute;
+    top: 30px;
+    right: 0px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+  }
+  &:hover &__block,
+  &__btn:focus + &__block {
+    right: 20px;
+    opacity: 1;
+    visibility: visible;
+  }
+  &__header {
+    font-size: 12px;
+  }
+  &__p {
+    margin-top: 5px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+}

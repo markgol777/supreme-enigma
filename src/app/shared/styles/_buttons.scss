@@ -1,0 +1,176 @@
+.btn-green {
+  height: 60px;
+  padding: 18px 30px;
+  background-color: $green;
+  border: 2px solid $green;
+  border-radius: 6px;
+  color: $white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+
+  @include screen-600 {
+    height: 50px;
+    padding: 14px 30px;
+    font-size: 12px;
+  }
+
+  &:hover {
+    background-color: transparent;
+    color: $green;
+  }
+}
+
+.btn-white {
+  @extend .btn-green;
+  background-color: $white;
+  color: $green;
+
+  &:hover {
+    background-color: $green;
+    color: $white;
+  }
+}
+
+.btn-milk {
+  display: inline-block;
+  padding: 15px 24px;
+  background-color: $milk;
+  border-radius: 6px;
+  color: $text-normal;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all .3s;
+
+  &:hover {
+    background-color: $green;
+    color: $white;
+  }
+}
+
+.btn-link {
+  padding: 3px;
+  color: $text-bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+
+  @include screen-1280 {
+    font-size: 12px;
+  }
+
+  @include screen-480 {
+    font-size: 10px;
+  }
+
+  &:hover {
+    color: $green;
+  }
+}
+
+.btn-plus {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: $text-bold;
+  font-size: 18px;
+  font-weight: bold;
+  &:nth-child(1) {
+    padding-bottom: 3px;
+  }
+  &:hover {
+    color: $white;
+  }
+}
+
+.card__count {
+  width: 30px;
+  height:30px;
+  margin: 0 2px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: $text-bold;
+  font-weight: 500;
+  text-align: center;
+}
+
+.svg {
+  width: 47px;
+  height: 45px;
+
+  @include screen-768 {
+    width: 36px;
+    height: 35px;
+  }
+
+  @include screen-480 {
+    width: 29px;
+    height: 28px;
+  }
+
+  &__bg {
+    fill: $green;
+    stroke: $green2;
+    transition: all 0.3s;
+  }
+
+  &__img {
+    fill: $white;
+    transition: all 0.3s;
+    stroke: $white;
+  }
+
+  &_hover {
+    &:hover .svg__bg {
+      fill: transparent;
+    }
+
+    &:hover .svg__img {
+      fill: $green;
+      stroke: $green;
+    }
+  }
+
+  &_fb {
+    .svg__bg {
+      fill: $fb;
+      stroke: $fb;
+    }
+
+    &:hover .svg__bg {
+      fill: transparent;
+    }
+
+    &:hover .svg__img {
+      fill: $fb;
+    }
+  }
+
+  &_inst {
+    .svg__bg {
+      fill: $inst;
+      stroke: $inst;
+    }
+
+    &:hover .svg__bg {
+      fill: transparent;
+    }
+
+    &:hover .svg__img {
+      fill: $inst;
+    }
+  }
+}
+
+.card__heart {
+  stroke: $red2;
+  stroke-width: 1.5;
+  fill: transparent;
+}
+.card__favorite {
+  fill: $red2;
+}

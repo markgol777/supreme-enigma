@@ -1,0 +1,196 @@
+<div 
+  class="container" 
+  *ngIf="!isOrdered"
+>
+  <h1 class="title1">Оформлення замовлення</h1>
+  <div class="section">
+    <div>
+
+      <form 
+        [formGroup]="userForm" 
+      >
+        <div class="block">
+          <h2 class="title6">
+            <span class="point">1</span>
+            Контактні дані
+          </h2>
+            <div class="form">
+              <div class="form__row">
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="*Ваше ім'я"
+                  formControlName="firstName"
+                >
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="*Ваше прізвище"
+                  formControlName="lastName"
+                >
+              </div>
+              <input
+                type="tel"
+                class="input"
+                placeholder="+38 (xxx) xxx xx xx"
+                formControlName="phoneNumber"
+              >
+              <input
+                type="email"
+                class="input"
+                placeholder="Email, щоб отримати копію замовлення"
+                formControlName="email"
+              >
+            </div>
+        </div>
+
+        <div class="block">
+          <h2 class="title6">
+            <span class="point">2</span>
+            Інформація про доставку
+          </h2>
+          <div 
+            *ngIf="!(userDelivery==='by courier')" 
+            class="form"
+          >
+            <label class="checkbox__label">
+              <span class="checkbox__span">
+              </span>
+              Самовивіз
+            </label>
+          </div>
+          <div 
+            *ngIf="userDelivery==='by courier'" 
+            class="form"
+          >
+            <label class="checkbox__label">
+              <span class="checkbox__span">
+              </span>
+              Доставка кур'єром
+            </label>
+            <input
+              type="text"
+              class="input"
+              placeholder="*Введить адресу доставки"
+              formControlName="adress"
+            >
+          </div>
+        </div>
+        
+        <div class="block">
+          <h2 class="title6">
+            <span class="point">3</span>
+            Інформація про оплату
+          </h2>
+          <div class="form">
+            <label class="checkbox__label">
+              <span class="checkbox__span">
+                <input 
+                  type="radio" 
+                  name="payment" 
+                  value=""
+                  class="checkbox__input"
+                >
+              </span>
+              Оплата готівкою
+            </label>
+            <label class="checkbox__label">
+              <span class="checkbox__span">
+                <input 
+                  type="radio" 
+                  name="payment" 
+                  value=""
+                  class="checkbox__input"
+                >
+              </span>
+              Онлайн оплата LiqPay
+            </label>
+            <label class="checkbox__label">
+              <span class="checkbox__span">
+                <input 
+                  type="radio" 
+                  name="payment" 
+                  value=""
+                  class="checkbox__input"
+                >
+              </span>
+              Оплата через термінал
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div>
+      <div class="block">
+        <h2 class="title6">Ваше замовлення</h2>
+        <div 
+          class="card" 
+          *ngFor="let product of basket"
+        >
+          <div class="card__img-div">
+            <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+              <img 
+                [src]="product.imagePath" 
+                [alt]="product.name" 
+                class="card__img"
+              >
+            </a>
+          </div>
+          <div>
+            <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+              <h3 class="card__name">{{ product.name }}</h3>
+            </a>
+            <div>
+              <button 
+                class="btn-milk btn-plus" 
+                (click)="changeCount(product, false)"
+              >-</button>
+              <input 
+                type="text" 
+                class="card__count" 
+                [value]="product.count" 
+                readonly
+              >
+              <button 
+                class="btn-milk btn-plus" 
+                (click)="changeCount(product, true)"
+              >+</button>
+            </div>
+          </div>
+          <div class="card__end">
+            <button (click)="deleteFromBasket(product)">
+              <svg class="card__delete">
+                <use href="../../../assets/images/icon_cross.svg#cross"></use>
+              </svg>
+            </button>
+            <p class="card__price">
+              <b>{{ product.count * product.price }}</b>
+              грн
+            </p>
+          </div>
+        </div>
+        <div class="sum">
+          <p class="title6">Сума:</p>
+          <p class="title6">
+            <span class="sum__span">{{ totalPrice }}</span>
+             грн
+        </div>
+        <button 
+          class="btn-green" 
+          (click)="createOrder()"
+          [disabled]="userForm.invalid"
+        >
+          Оформити замовлення
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div 
+  class="container" 
+  *ngIf="isOrdered"
+>
+  <p class="title1">Ваше замовлення скоро буде готово</p>
+</div>

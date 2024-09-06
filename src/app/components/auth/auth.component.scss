@@ -1,0 +1,20 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.btn-link {
+  &__img {
+    @include screen-480 {
+      display: none;
+    }
+  }
+
+  &:has(img) {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    @include screen-600 {
+      column-gap: 5px;
+    }
+  }
+}

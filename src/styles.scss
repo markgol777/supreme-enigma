@@ -1,0 +1,100 @@
+@import 'src/app/shared/styles/base';
+@import 'src/app/shared/styles/fonts';
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+@import 'src/app/shared/styles/text';
+@import 'src/app/shared/styles/nav-select';
+@import 'src/app/shared/styles/cards';
+@import 'src/app/shared/styles/buttons';
+@import 'src/app/shared/styles/dialog';
+@import 'src/app/shared/styles/forms';
+@import 'src/app/shared/styles/table';
+
+html:not(.touch-screen)::-webkit-scrollbar,
+html:not(.touch-screen) *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+html:not(.touch-screen)::-webkit-scrollbar-track,
+html:not(.touch-screen) *::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+html:not(.touch-screen)::-webkit-scrollbar-thumb,
+html:not(.touch-screen) *::-webkit-scrollbar-thumb {
+  background: #599921;
+}
+
+body {
+  font-family: 'Geometria', sans-serif;
+  color: $text-normal;
+  font-weight: 400;
+}
+
+:focus {
+  outline-color: $text-bold;
+}
+
+:disabled {
+  filter: opacity(70%);
+
+  &:hover {
+    background-color: $green;
+    color: $white;
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 80px 0;
+
+  @include screen-1280 {
+    padding: 60px 60px 0;
+  }
+
+  @include screen-768 {
+    padding: 30px 40px 0;
+  }
+
+  @include screen-600 {
+    padding: 20px 20px 0;
+  }
+}
+
+.container:has(.nav__select) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  margin-bottom: 90px;
+
+  @include screen-1280 {
+    margin-bottom: 80px;
+  }
+
+  @include screen-768 {
+    margin-bottom: 30px;
+  }
+}
+
+.point {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  padding: 2px;
+  background-color: $green;
+  border-radius: 6px;
+  color: $white;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  @include screen-480 {
+    width: 24px;
+    height: 24px;
+  }
+}

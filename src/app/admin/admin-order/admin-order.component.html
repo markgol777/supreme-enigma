@@ -1,0 +1,44 @@
+<div class="row">
+  <button 
+    class="btn-white" 
+    (click)="loadAllOrders()"
+  >
+    Всі замовлення
+  </button>
+  <button 
+    class="btn-white" 
+    (click)="loadNewOrders()"
+  >
+    Нові замовлення
+  </button>
+</div>
+
+<table class="table">
+  <tr>
+    <th class="table__th">Дата</th>
+    <th class="table__th">Доставка</th>
+    <th class="table__th">Сума</th>
+    <th class="table__th">Статус</th>
+    <th class="table__th">Дії</th>
+  </tr>
+  <tr *ngFor="let order of adminOrders">
+    <td class="table__td">
+      {{ createDate(order.date) | date: 'dd.mm.yyyy, HH:mm' }}
+    </td>
+    <td class="table__td">{{ writeDelivery(order.delivery) }}</td>
+    <td class="table__td">{{ order.sum }}</td>
+    <td class="table__td">
+      {{ order.status }}
+    </td>
+    <td class="table__td">
+      <span class="table__action">
+        <button 
+          class="table__btn underline" 
+          (click)="completeOrder(order)"
+        >
+          Виконати
+        </button>
+      </span>
+    </td>
+  </tr>
+</table>

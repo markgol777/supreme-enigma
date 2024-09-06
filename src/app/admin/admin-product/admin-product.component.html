@@ -1,0 +1,96 @@
+<div class="add">
+
+  <button class="btn-white" (click)="toggleOpenForm()">
+    {{ editStatus ? 'Редагувати' : 'Додати товар' }}
+  </button>
+
+  <form class="form" *ngIf="formIsOpen" [formGroup]="productForm" (ngSubmit)="saveProduct()">
+    <div class="form__row">
+      <input type="text" class="input" placeholder="*Назва" formControlName="name">
+      <select class="input" formControlName="category">
+        <option value="">*Категорія</option>
+        <option [ngValue]="category" *ngFor="let category of adminCategories">
+          {{ category.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form__row">
+      <div class="form__half-row">
+        <input type="text" class="input" placeholder="*Шлях" formControlName="path">
+      </div>
+      <div class="form__half-row">
+        <input type="text" class="input" placeholder="*Вага" formControlName="weight">
+        <input type="number" class="input" placeholder="*Ціна" formControlName="price">
+      </div>
+    </div>
+    <div class="form__row">
+      <input type="number" class="input" placeholder="*Калорії" formControlName="calories">
+      <input type="number" class="input" placeholder="*Білки" formControlName="proteins">
+      <input type="number" class="input" placeholder="*Жири" formControlName="fats">
+      <input type="number" class="input" placeholder="*Вуглеводи" formControlName="carbohydrates">
+    </div>
+    <textarea class="input textarea" placeholder="*Опис" formControlName="description"></textarea>
+    <textarea class="input textarea" placeholder="*Алергени" formControlName="allergens"></textarea>
+
+    <ng-container *ngIf="!isUploaded">
+      <input type="file" class="input" (change)="uploadImage($event)">
+      <progress [value]="imageService.uploadPercent" max="100" class="progress"></progress>
+    </ng-container>
+
+    <div class="form__inner" *ngIf="isUploaded">
+      <img [src]="valueByControl('imagePath')" alt="valueByControl(name)" class="form__img">
+      <button class="underline" type="button" (click)="deleteImage()">
+        Видалити
+      </button>
+    </div>
+
+
+    <button class="btn-green" type="submit" [disabled]="productForm.invalid">
+      Надіслати
+    </button>
+  </form>
+</div>
+
+<table class="table">
+  <tr>
+    <th class="table__th">Категорія</th>
+    <th class="table__th">Назва</th>
+    <th class="table__th">Шлях</th>
+    <th class="table__th">Картинка</th>
+    <th class="table__th">Опис</th>
+    <th class="table__th">Алергени</th>
+    <th class="table__th">Вага</th>
+    <th class="table__th">Калорії</th>
+    <th class="table__th">Білки</th>
+    <th class="table__th">Жири</th>
+    <th class="table__th">Вуглеводи</th>
+    <th class="table__th">Ціна</th>
+    <th class="table__th">Дії</th>
+  </tr>
+  <tr *ngFor="let product of adminProducts">
+    <td class="table__td">{{ product.category.name }}</td>
+    <td class="table__td">{{ product.name }}</td>
+    <td class="table__td">{{ product.path }}</td>
+    <td class="table__td">
+      <img [src]="product.imagePath" [alt]="product.name" class="table__img">
+    </td>
+    <td class="table__td">{{ product.description }}</td>
+    <td class="table__td">{{ product.allergens }}</td>
+    <td class="table__td text-wrap">{{ product.weight }}</td>
+    <td class="table__td">{{ product.calories }}</td>
+    <td class="table__td">{{ product.proteins }}</td>
+    <td class="table__td">{{ product.fats }}</td>
+    <td class="table__td">{{ product.carbohydrates }}</td>
+    <td class="table__td text-wrap">{{ product.price }} грн</td>
+    <td class="table__td">
+      <span class="table__action">
+        <button class="table__btn underline" (click)="editProduct(product)">
+          Редагувати
+        </button>
+        <button class="table__btn underline" (click)="deleteProduct(product)">
+          Видалити
+        </button>
+      </span>
+    </td>
+  </tr>
+</table>

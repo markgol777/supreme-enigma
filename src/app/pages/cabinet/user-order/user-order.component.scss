@@ -1,0 +1,15 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.table .table {
+  margin-bottom: 20px;
+}
+
+.table__th,
+.table__td {
+  width: calc(100% / 4);
+}
+
+.tr .table__th {
+  border-bottom: 1px solid $green;
+}

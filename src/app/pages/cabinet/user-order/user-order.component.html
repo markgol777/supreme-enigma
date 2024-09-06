@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th class="table__th">Дата</th>
+      <th class="table__th">Доставка</th>
+      <th class="table__th">Сума</th>
+      <th class="table__th">Статус</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of userOrders">
+      <td colspan="4">
+        <table class="table">
+          <tbody>
+            <tr class="tr">
+              <th class="table__th">
+                {{ createDate(order.date) | date: 'dd.mm.yyyy, HH:mm' }}
+              </th>
+              <th class="table__th">{{ writeDelivery(order.delivery) }}</th>
+              <th class="table__th">
+                <b>{{ order.sum }}</b>
+              </th>
+              <th class="table__th">{{ order.status }}</th>
+            </tr>
+            <tr *ngFor="let product of order.products">
+              <td class="table__td" colspan="2">{{ product.name }}</td>
+              <td class="table__td">{{ product.price }}</td>
+              <td class="table__td">{{ product.count }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>

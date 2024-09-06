@@ -1,0 +1,156 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.container {
+
+  @media screen and (min-width: 1280px) {
+    padding: 60px 100px 0;
+  }
+}
+
+.section {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 25px;
+
+  @include screen-1280 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include screen-768 {
+    grid-template-columns: 1fr;
+  }
+
+  &__block {
+    &:nth-child(5) {
+      grid-area: 2 / 3 / 3 / 4;
+
+      @include screen-1280 {
+        grid-area: auto;
+      }
+    }
+  }
+
+  .title6 {
+    margin-bottom: 20px;
+  }
+
+  &__info {
+    padding: 20px 30px;
+    background-color: $milk;
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    gap: 10px 30px;
+
+    @include screen-1280 {
+      padding: 15px 15px;
+    }
+
+    @include screen-480 {
+      padding: 10px 10px;
+    }
+  }
+
+  &__svg {
+    justify-self: center;
+    height: 20px;
+    margin-top: 5px;
+    fill: $green2;
+  }
+
+  &__text {
+    color: $text-bold;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+
+    @include screen-1280 {
+      font-size: 16px;
+    }
+
+    @include screen-480 {
+      font-size: 14px;
+    }
+  }
+
+  &__span {
+    color: $text-normal;
+    font-weight: normal;
+  }
+}
+
+.two {
+  display: flex;
+  column-gap: 3vw;
+
+  @include screen-1280 {
+    flex-direction: column-reverse;
+    row-gap: 40px;
+  }
+
+  @include screen-480 {
+    row-gap: 30px;
+  }
+}
+
+.write {
+  width: 50%;
+
+  @include screen-1280 {
+    width: 100%;
+  }
+
+  .title4 {
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: 700;
+
+    @include screen-1280 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    @include screen-768 {
+      font-size: 22px;
+    }
+
+    @include screen-480 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .btn-green {
+    align-self: center;
+    width: 300px;
+    margin-top: 15px;
+
+    @include screen-768 {
+      align-self: flex-start;
+      margin-top: 5px;
+    }
+
+    @include screen-480 {
+      width: 100%;
+    }
+  }
+}
+
+.map {
+  width: 50%;
+
+  @include screen-1280 {
+    width: 100%;
+  }
+
+  &__img {
+    width: 100%;
+  }
+}

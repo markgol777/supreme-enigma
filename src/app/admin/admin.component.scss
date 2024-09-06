@@ -1,0 +1,19 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.container {
+  margin: 0 auto;
+
+  @include screen-1280 {
+    padding: 60px 20px 0;
+  }
+}
+
+.btn-green {
+  margin-bottom: 40px;
+  align-self: start;
+}
+
+.wrapper {
+  width: 100%;
+}

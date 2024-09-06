@@ -1,0 +1,137 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: $overlay;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.dialog {
+  width: calc(100vw - 30px);
+  max-width: 680px;
+  padding: 60px 70px 70px;
+  background-color: $white;
+  background-image: url('../../../assets/images/dialog_list.svg');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 25px;
+  animation: scale .3s ease-in;
+
+  @include screen-600 {
+    padding: 40px 25px;
+  }
+
+  @include screen-480 {
+    padding: 25px 15px;
+    background-image: none;
+    gap: 15px;
+  }
+
+  &__title {
+    color: $text-bold;
+    font-size: 34px;
+    font-weight: bold;
+    text-align: center;
+
+    @include screen-1280 {
+      font-size: 28px;
+    }
+
+    @include screen-768 {
+      font-size: 26px;
+    }
+
+    @include screen-480 {
+      font-size: 22px;
+    }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  &__row2 {
+    text-align: center;
+    font-size: 16px;
+
+    @include screen-480 {
+      font-size: 14px;
+    }
+  }
+
+  .underline+.underline {
+    color: $text-normal;
+
+    &::after {
+      background-color: $text-normal;
+    }
+  }
+}
+
+.close {
+  width: 80px;
+  height: 80px;
+  padding: 0 0 10px 15px;
+  background-image: url('../../../assets/images/dialog_btn.svg');
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @include screen-480 {
+    width: 50px;
+    height: 50px;
+    padding: 0 0 5px 8px;
+    background-size: 52px 51px;
+  }
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+    stroke: $text-normal;
+    stroke-width: 2;
+
+    @include screen-480 {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &:hover &__svg {
+    stroke: $green;
+  }
+}
+
+@keyframes translateX {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}

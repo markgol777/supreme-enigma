@@ -1,0 +1,26 @@
+<div class="container">
+
+  <button class="btn-green" 
+    (click)="logout()">
+    Вихід
+  </button>
+
+  <nav class="nav" [ngClass]="{'nav-open': navSelectIsOpen}">
+    <button class="nav__select" type="button" (click)="toggleNavSelect()">{{ activePage }}</button>
+    <div class="nav__wrapper">
+      <a [routerLink]="[ 'data' ]" routerLinkActive="active" class="btn-milk"
+        (click)="closeNavSelect('Особисті дані')">Особисті дані</a>
+      <a [routerLink]="[ 'order' ]" routerLinkActive="active" class="btn-milk"
+        (click)="closeNavSelect('Історія замовлень')">Історія замовлень</a>
+      <a [routerLink]="[ 'favorite' ]" routerLinkActive="active" class="btn-milk"
+        (click)="closeNavSelect('Улюблені')">Улюблені</a>
+      <a [routerLink]="[ 'password' ]" routerLinkActive="active" class="btn-milk"
+        (click)="closeNavSelect('Зміна паролю')">Зміна паролю</a>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

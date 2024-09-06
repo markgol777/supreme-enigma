@@ -1,0 +1,138 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.container {
+  max-width: 1300px;
+}
+
+.section {
+  display: flex;
+  column-gap: 40px;
+  @include screen-1024 {
+    flex-direction: column;
+  }
+  &>div {
+    width: 100%;
+  }
+}
+
+.block {
+  margin-bottom: 20px;
+  .title6 {
+    margin-bottom: 20px;
+  }
+  .btn-green {
+    width: 100%;
+  }
+}
+
+.checkbox {
+  &__label {
+    color: $text-bold;
+    column-gap: 15px;
+  }
+  &__span {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    &::after {
+      border-radius: 3px;
+    }
+    @include screen-480 {
+      width: 18px;
+      height: 18px;
+      &::after {
+        width: 10px;
+        height: 10px;
+      }
+    }
+    &:has(input:checked) {
+      &::after {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    &:not(:has(input)) {
+    border-color: $green;
+    &::after {
+      width: 12px;
+      height: 12px;
+    }
+    }
+  }
+}
+
+.card {
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid $border1;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  column-gap: 30px;
+  @include screen-768 {
+    padding: 10px;
+    column-gap: 15px;
+  }
+  @include screen-480 {
+    grid-template-columns: 1fr max-content;
+  }
+  &__img-div {
+    width: 100px;
+    height: 100px;
+    @include screen-600 {
+      width: 80px;
+      height: 80px;
+    }
+    @include screen-480 {
+      display: none;
+    }
+  }
+  &__img {
+    height: 100%;
+  }
+  &__name {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: $text-bold;
+    @include screen-600 {
+      font-size: 16px;
+    }
+  }
+  &__end {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  &__delete {
+    width: 24px;
+    height: 24px;
+    stroke: $text-bold;
+    stroke-width: 2;
+    @include screen-480 {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  &__price {
+    color: $text-bold;
+    @include screen-600 {
+      font-size: 14px;
+    }
+  }
+}
+
+.sum {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  .title6:nth-child(2) {
+    font-weight: normal;
+  }
+  &__span {
+    font-weight: bold;
+  }
+}

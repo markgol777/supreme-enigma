@@ -1,0 +1,243 @@
+.title1 {
+  margin-bottom: 60px;
+  text-align: center;
+  color: $text-bold;
+  font-size: 42px;
+
+  @include screen-1280 {
+    margin-bottom: 40px;
+    font-size: 38px;
+  }
+
+  @include screen-768 {
+    margin-bottom: 20px;
+    font-size: 34px;
+  }
+
+  @include screen-480 {
+    font-size: 24px;
+  }
+}
+
+.title2 {
+  color: $text-bold;
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.2em;
+
+  @include screen-1280 {
+    font-size: 40px;
+  }
+
+  @include screen-768 {
+    font-size: 38px;
+  }
+}
+
+.title3 {
+  color: $text-bold;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.2em;
+
+  @include screen-1280 {
+    font-size: 38px;
+  }
+
+  @include screen-768 {
+    font-size: 34px;
+  }
+}
+
+.title4 {
+  color: $text-bold;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.2em;
+
+  @include screen-1280 {
+    font-size: 28px;
+  }
+
+  @include screen-768 {
+    font-size: 26px;
+  }
+
+  @include screen-480 {
+    font-size: 22px;
+  }
+}
+
+.title5 {
+  color: $text-bold;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+
+  @include screen-1280 {
+    font-size: 20px;
+  }
+
+  @include screen-480 {
+    font-size: 18px;
+  }
+}
+
+.title6 {
+  color: $text-bold;
+  font-size: 20px;
+  line-height: 1.3em;
+  font-weight: 500;
+
+  @include screen-1280 {
+    font-size: 18px;
+  }
+
+  @include screen-480 {
+    font-size: 16px;
+  }
+}
+
+.paragraph {
+  color: $text-normal;
+  font-size: 16px;
+  line-height: 28px;
+
+  @include screen-1280 {
+    font-size: 15px;
+  }
+
+  @include screen-480 {
+    font-size: 13px;
+  }
+}
+
+.ul {
+  &__li {
+    margin-top: 10px;
+    margin-left: 25px;
+    font-size: 16px;
+    line-height: 1.5rem;
+    position: relative;
+
+    @include screen-480 {
+      margin-top: 6px;
+      margin-left: 20px;
+      font-size: 14px;
+      line-height: 1.3rem;
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: 2px solid $green;
+      border-radius: 50%;
+      position: absolute;
+      top: 8px;
+      left: -24px;
+
+      @include screen-1280 {
+        width: 8px;
+        height: 8px;
+        top: 9px;
+      }
+
+      @include screen-480 {
+        border-width: 1px;
+        width: 6px;
+        height: 6px;
+        left: -20px;
+      }
+    }
+
+    &_yellow::before {
+      border-color: $yellow;
+    }
+
+    &_red::before {
+      border-color: $red;
+    }
+  }
+}
+
+.big {
+  text-transform: uppercase;
+}
+
+.text-wrap {
+  white-space: nowrap;
+}
+
+.green {
+  color: $green;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.red {
+  color: $red;
+}
+
+.bg-green {
+  background-color: $green2;
+  color: $white;
+}
+
+.underline {
+  padding: 2px;
+  color: $green2;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+
+  @include screen-480 {
+    font-size: 14px;
+  }
+}
+
+// .underline-invert {
+//     @extend .underline;
+//     font-size: 12px;
+//     text-transform: uppercase;
+//     letter-spacing: 0.1em;
+//     font-weight: 700;
+// }
+
+@media screen and (min-width: 768px) {
+  .underline {
+    &::after {
+      content: '';
+      width: 0;
+      height: 2px;
+      background-color: $green2;
+      position: absolute;
+      bottom: 0px;
+      left: auto;
+      right: 0;
+      transition: all .3s;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
+  }
+
+  .underline-invert {
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+
+    &:hover::after {
+      width: 0;
+      left: auto;
+      right: 0;
+    }
+  }
+}

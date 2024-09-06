@@ -1,0 +1,48 @@
+<div class="div">
+  <h2 class="title6">
+    <span class="point">1</span>
+    Особисті дані
+  </h2>
+  
+  <form
+    class="form"
+    [formGroup]="userForm"
+  >
+    <div class="form__row">
+      <input
+        type="text"
+        class="input"
+        placeholder="*Ваше ім'я"
+        formControlName="firstName"
+      >
+      <input
+        type="text"
+        class="input"
+        placeholder="*Ваше прізвище"
+        formControlName="lastName"
+      >
+    </div>
+    <input
+      type="tel"
+      class="input"
+      placeholder="*Ваш телефон"
+      formControlName="phoneNumber"
+    >
+    <input
+      type="email"
+      class="input"
+      placeholder="*Ваш email"
+      formControlName="email"
+    >
+  </form>
+  
+  <h2 class="title6">
+    <span class="point">2</span>
+    Адреси
+  </h2>
+  
+  <div class="row">
+    <button class="btn-white">Додати адресу</button>
+    <button class="btn-green">Зберегти зміни</button>
+  </div>
+</div>

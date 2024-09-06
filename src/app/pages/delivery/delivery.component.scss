@@ -1,0 +1,165 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.container {
+  background: url('../../../assets/images/seo_decor_one.svg') 0 82% no-repeat, url('../../../assets/images/seo_decor_two.svg') 100% 95% no-repeat;
+
+  @include screen-1280 {
+    background-image: none;
+  }
+}
+
+.section {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.delivery {
+  display: flex;
+  gap: 30px;
+
+  @include screen-1280 {
+    flex-direction: column-reverse;
+  }
+}
+
+.zone {
+  display: flex;
+  flex-direction: column;
+  row-gap: 80px;
+
+  @include screen-1280 {
+    row-gap: 60px;
+  }
+
+  @include screen-768 {
+    row-gap: 40px;
+  }
+
+  @include screen-480 {
+    row-gap: 15px;
+  }
+
+  &__block {
+    display: flex;
+    column-gap: 40px;
+
+    @include screen-768 {
+      column-gap: 20px;
+    }
+  }
+
+  &__svg {
+    width: 98px;
+    height: 98px;
+
+    @include screen-480 {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+  &__use {
+    &_green {
+      fill: $green2;
+    }
+
+    &_yellow {
+      fill: $yellow2;
+    }
+
+    &_red {
+      fill: $red2;
+    }
+  }
+
+  &__title2 {
+    font-size: 26px;
+    line-height: 1.2em;
+    letter-spacing: 0.03em;
+    margin-bottom: 15px;
+    font-weight: 500;
+
+    @include screen-1280 {
+      font-size: 24px;
+    }
+
+    @include screen-768 {
+      font-size: 22px;
+    }
+
+    @include screen-480 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+  }
+
+  .ul__li {
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.map {
+  &__img {
+    width: 100%;
+  }
+}
+
+.payment {
+  &__wrapper {
+    display: flex;
+    gap: 40px 30px;
+
+    @include screen-1280 {
+      flex-wrap: wrap;
+    }
+
+    @include screen-480 {
+      gap: 30px;
+    }
+  }
+
+  &__block {
+    width: 33%;
+    display: flex;
+    align-items: flex-start;
+    column-gap: 20px;
+
+    @include screen-1280 {
+      width: 45%;
+    }
+
+    @include screen-768 {
+      width: 100%;
+    }
+  }
+
+  &__img {
+    width: 75px;
+
+    @include screen-480 {
+      width: 60px;
+    }
+  }
+
+  .title5 {
+    margin-bottom: 15px;
+
+    @include screen-768 {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__p {
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    line-height: 1.5em;
+
+    @include screen-480 {
+      font-size: 14px;
+    }
+  }
+}

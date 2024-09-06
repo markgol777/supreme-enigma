@@ -1,0 +1,151 @@
+<button 
+  *ngIf="!loginUrl"
+  class="btn-link" 
+  (click)="openSignIn()"
+>
+  <img 
+    src="../../../assets/images/icon_user.svg" 
+    alt="Увійти" 
+    class="btn-link__img"
+  >
+  Вхід
+</button>
+<a 
+  *ngIf="loginUrl"
+  class="btn-link" 
+  [routerLink]="[ '/'+loginUrl ]"
+>
+  <img 
+    src="../../../assets/images/icon_user.svg" 
+    [alt]="userName" 
+    class="btn-link__img"
+  >
+  {{ userName }}
+</a>
+
+<div class="overlay" *ngIf="signInIsOpen">
+  <div class="dialog">
+    <button class="close" (click)="closeSignIn()">
+      <svg class="close__svg">
+        <use href="../../../assets/images/icon_cross.svg#cross"></use>
+      </svg>
+    </button>
+    <h3 class="dialog__title">Вхід в кабінет</h3>
+
+    <form 
+      class="form"
+      [formGroup]="loginForm" 
+      (ngSubmit)="loginUser()"
+    >
+      <input 
+        type="email" 
+        class="input" 
+        placeholder="*Ваш email" 
+        formControlName="email"
+      >
+      <input 
+        type="password" 
+        class="input" 
+        placeholder="*Пароль" 
+        formControlName="password"
+      >
+      <button 
+        class="btn-green" 
+        type="submit" 
+        [disabled]="loginForm.invalid"
+      >
+        Увійти в кабінет
+      </button>
+    </form>
+
+    <div class="dialog__row">
+      <button class="underline">Забули пароль?</button>
+      <button class="underline" (click)="openSignUp()">Зареєструватись</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="signUpIsOpen">
+  <div class="dialog">
+    <button class="close" (click)="closeSignUp()">
+      <svg class="close__svg">
+        <use href="../../../assets/images/icon_cross.svg#cross"></use>
+      </svg>
+    </button>
+    <h3 class="dialog__title">Зареєструватися</h3>
+
+    <form 
+      class="form" 
+      [formGroup]="registerForm" 
+      (ngSubmit)="registerUser()"
+    >
+      <div class="form__row">
+        <input 
+          type="text" 
+          class="input" 
+          placeholder="*Ваше ім'я" 
+          formControlName="firstName"
+        >
+        <input 
+          type="text" 
+          class="input" 
+          placeholder="*Ваше прізвище" 
+          formControlName="lastName"
+        >
+      </div>
+      <input 
+        type="tel" 
+        class="input" 
+        placeholder="*Ваш телефон" 
+        value="+380"
+        formControlName="phoneNumber"
+      >
+      <input 
+        type="email" 
+        class="input" 
+        placeholder="*Ваш email" 
+        formControlName="email"
+      >
+      <div class="form__row">
+        <input 
+          type="password" 
+          class="input" 
+          placeholder="*Пароль" 
+          formControlName="password"
+        > 
+        <input 
+          type="password" 
+          class="input" 
+          placeholder="*Повторіть пароль" 
+          formControlName="confirmPassword"
+          (blur)="checkConfirmedPassword()"
+        >
+      </div>
+      <label class="checkbox__label">
+        <span class="checkbox__span">
+          <input type="checkbox" class="checkbox__input">
+        </span>
+        Хочу отримувати пропозиції на email
+      </label>
+      <label class="checkbox__label">
+        <span class="checkbox__span">
+          <input type="checkbox" class="checkbox__input">
+        </span>
+        Я погоджуюсь з
+        <a href="#" class="underline">Правилами користування</a>
+      </label>
+      <button 
+        class="btn-green" 
+        type="submit" 
+        [disabled]="registerForm.invalid" 
+      >
+        Зареєструватись
+      </button>
+    </form>
+
+    <div class="dialog__row2">
+      <span class="dialog__span">Вже зареєстровані? </span>
+      <button class="underline" (click)="openSignIn()">Увійти</button>
+    </div>
+  </div>
+</div>

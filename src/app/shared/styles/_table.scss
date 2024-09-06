@@ -1,0 +1,38 @@
+.table {
+  width: 100%;
+  margin: 0 auto 60px;
+  border-spacing: 2px;
+
+  @include screen-768 {
+    margin-bottom: 30px;
+  }
+
+  &__th,
+  &__td {
+    padding: 10px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px solid $border;
+  }
+
+  &__th {
+    padding: 15px 10px;
+    border-bottom: 2px solid $green;
+  }
+
+  &__img {
+    height: 50px;
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    row-gap: 5px;
+  }
+
+  &__btn {
+    font-size: 14px;
+  }
+}

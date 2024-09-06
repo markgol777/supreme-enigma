@@ -1,0 +1,219 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.info-b {
+  width: 115px;
+  height: 105px;
+  position: fixed;
+  z-index: 9;
+  top: 170px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include screen-1280 {
+    top: 145px;
+  }
+  @include screen-600 {
+    width: 90px;
+    height: 82px;
+  }
+  &__bg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(15deg);
+    transition: all .3s;
+    position: absolute;
+    z-index: -1;
+  }
+  &:hover &__bg {
+    transform: rotate(0deg);
+  }
+  &__block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 15px;
+    position: relative;
+    @include screen-600 {
+      column-gap: 10px;
+    }
+  }
+  &__img {
+    width: 24px;
+    height: 23px;
+    @include screen-600 {
+      width: 20px;
+      height: 19px;
+    }
+  }
+  &__count {
+    width: 18px;
+    height: 18px;
+    background-color: $white;
+    border-radius: 50%;
+    color: $text-bold;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 15px;
+    @include screen-600 {
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+      left: 12px;
+    }
+  }
+  &__sum {
+    color: $white;
+    @include screen-600 {
+      font-size: 12px;
+    }
+  }
+}
+
+.basket {
+  width: 680px;
+  height: 100vh;
+  background-color: $white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  animation: translateX .3s ease-in;
+  @include screen-768 {
+    width: 100%;
+  }
+  &__header {
+    padding: 40px 50px 20px;
+    display: flex;
+    justify-content: space-between;
+    @include screen-768 {
+      padding: 20px;
+    }
+  }
+  &__h2 {
+    font-size: 24px;
+    color: $text-bold;
+  }
+  &__top {
+    display: flex;
+    align-items: center;
+    column-gap: 60px;
+    @include screen-480 {
+      column-gap: 20px;
+    }
+  }
+  .btn-link {
+    font-size: 14px;
+    @include screen-480 {
+      font-size: 12px;
+    }
+  }
+  &__close {
+    width: 30px;
+    height: 30px;
+    stroke: $text-bold;
+    stroke-width: 3;
+    &:hover {
+      stroke: $green;
+    }
+    @include screen-480 {
+      width: 22px;
+      height: 22px;
+    }
+  }
+  &__main {
+    height: calc(100vh - 196px);
+    padding: 0 50px;
+    overflow-y: scroll;
+    @include screen-768 {
+      padding: 0 20px;
+    }
+  }
+  &__footer {
+    padding: 20px 50px;
+    border-top: 2px solid $green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include screen-768 {
+      padding: 20px;
+    }
+    @include screen-600 {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+  }
+  &__p {
+    color: $text-bold;
+  }
+  &__sum {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+.card {
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid $border1;
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  align-items: center;
+  column-gap: 30px;
+  @include screen-768 {
+    padding: 10px;
+    column-gap: 15px;
+  }
+  @include screen-480 {
+    grid-template-columns: 1fr max-content;
+  }
+  &__img-div {
+    width: 100px;
+    height: 100px;
+    @include screen-600 {
+      width: 80px;
+      height: 80px;
+    }
+    @include screen-480 {
+      display: none;
+    }
+  }
+  &__img {
+    height: 100%;
+  }
+  &__name {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: $text-bold;
+    @include screen-600 {
+      font-size: 16px;
+    }
+  }
+  &__end {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  &__delete {
+    width: 24px;
+    height: 24px;
+    stroke: $text-bold;
+    stroke-width: 2;
+    @include screen-480 {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  &__price {
+    color: $text-bold;
+    @include screen-600 {
+      font-size: 14px;
+    }
+  }
+}

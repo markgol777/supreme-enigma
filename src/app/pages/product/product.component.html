@@ -1,0 +1,121 @@
+<div class="container">
+
+  <nav class="nav" [ngClass]="{'nav-open': navSelectIsOpen}">
+    <button 
+      class="nav__select"
+      (click)="toggleNavSelect()"
+    >
+      {{ activePage }}
+    </button>
+    <div class="nav__wrapper">
+      <a *ngFor="let category of userCategories" 
+        [routerLink]="[ '/product/'+category.path ]" 
+        routerLinkActive="active"
+        class="btn-milk" (click)="closeNavSelect(category.name)">{{ category.name }}</a>
+    </div>
+  </nav>
+
+  <section class="section cards">
+    <div 
+      *ngFor="let product of userProducts" 
+      class="card"
+    >
+      <div class="card__icons">
+        <button  
+          (click)="addToFavorite(product)"
+        >
+          <svg width="22" height="19" 
+            class="card__heart" 
+            [ngClass]="{'card__favorite': isFavorite(product.id)}"
+          >
+            <use href="../../../assets/images/icon_sprite_products.svg#heart"></use>
+          </svg>
+        </button>
+        <div class="info">
+          <button 
+            class="info__btn">
+            <svg width="6" height="12" class="info__svg"
+          >
+              <use href="../../../assets/images/icon_sprite_products.svg#info"></use>
+            </svg>
+          </button>
+          <div class="info__block">
+            <p class="info__header">
+              Основна страва
+              <b>{{ product.calories }} ккал</b>
+            </p>
+            <p class="info__p">
+              <svg width="17" height="17">
+                <use href="../../../assets/images/icon_sprite_products.svg#proteins"></use>
+              </svg>
+              <span>
+                Білки
+                <b>{{ product.proteins }}</b> г;
+              </span>
+            </p>
+            <p class="info__p">
+              <svg width="17" height="19">
+                <use href="../../../assets/images/icon_sprite_products.svg#fats"></use>
+              </svg>
+              <span>
+                Жири
+                <b>{{ product.fats }}</b> г;
+              </span>
+            </p>
+            <p class="info__p">
+              <svg width="18" height="19">
+                <use href="../../../assets/images/icon_sprite_products.svg#carbohydrates"></use>
+              </svg>
+              <span>
+                Вуглеводи
+                <b>{{ product.carbohydrates }}</b> г;
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card__img-div">
+        <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+          <img [src]="product.imagePath" [alt]="product.name" class="card__img">
+        </a>
+        <div class="card__order-div">
+          <button 
+            class="btn-milk card__order-btn" 
+            (click)="fastOrder(product)"
+          >Швидке замовлення</button>
+        </div>
+      </div>
+      <div>
+        <div class="card__header">
+          <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+            <h2 class="title6 card__h2">{{ product.name }}</h2>
+          </a>
+          <span class="card__price">{{ product.price }}</span>
+        </div>
+        <p class="paragraph">{{ product.description }}</p>
+      </div>
+      <div class="card__actions">
+        <div>
+          <button 
+            class="btn-milk btn-plus" 
+            (click)="changeCount(product, false)"
+          >-</button>
+          <input 
+            type="text" 
+            class="card__count" 
+            [value]="product.count" 
+            readonly
+          >
+          <button 
+            class="btn-milk btn-plus" 
+            (click)="changeCount(product, true)"
+          >+</button>
+        </div>
+        <button 
+          class="btn-green" 
+          (click)="addToBasket(product)"
+        >Замовити</button>
+      </div>
+    </div>
+  </section>
+</div>

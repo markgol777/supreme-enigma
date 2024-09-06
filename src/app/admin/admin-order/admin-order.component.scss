@@ -1,0 +1,19 @@
+@import 'src/app/shared/styles/variables';
+@import 'src/app/shared/styles/mixins';
+
+.row {
+  display: flex;
+  justify-content: center;
+  column-gap: 100px;
+  @include screen-768 {
+    column-gap: 60px;
+  }
+  @include screen-600 {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+
+.table {
+    margin-top: 30px;
+}

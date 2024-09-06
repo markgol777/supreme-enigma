@@ -1,0 +1,144 @@
+<div class="wrapper">
+
+  <div class="top">
+    <p class="top__p">Тип доставки:</p>
+    <div class="top__div">
+      <button class="top__btn" [ngClass]="{'top__btn_active': yourDelivery==='self pickup'}"
+        (click)="changeDelivery('self pickup')">
+        Самовивіз
+      </button>
+      <button class="top__btn" [ngClass]="{'top__btn_active': yourDelivery==='by courier'}"
+        (click)="changeDelivery('by courier')">
+        Доставка кур’єром
+      </button>
+    </div>
+  </div>
+
+  <header class="header">
+    <a [routerLink]="[ '/' ]" class="logo">
+      <img src="../../../assets/images/logo.png" alt="на головну сторінку" class="logo__img">
+    </a>
+
+    <nav class="nav-h">
+      <div 
+        class="nav-h__wrapper" 
+        [ngClass]="{'nav-h__open': navMenuIsOpen}"
+        (mouseover)="openNavMenu()"
+        (mouseout)="closeNavMenu()"
+      >
+        <button 
+          class="btn-link" 
+          (click)="toggleNavMenu()"
+        >
+          Меню
+        </button>
+        <ul class="nav-h__ul">
+          <li class="nav-h__li" *ngFor="let category of userCategories">
+            <a 
+              [routerLink]="[ '/product/'+category.path ]" 
+              class="nav-h__link" 
+              (click)="closeNavMenu()"
+            >
+              <img [src]="category.imagePath" [alt]="category.name" class="nav-h__img">
+              <span class="nav-h__span">{{ category.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- <a href="#" class="btn-link">Збери сам</a> -->
+      <a [routerLink]="[ '/delivery' ]" class="btn-link">Доставка</a>
+      <a [routerLink]="[ '/about' ]" class="btn-link">Про Томатіну</a>
+    </nav>
+
+    <div class="block-right">
+      <!-- <button class="btn-link" type="button" (click)="translateSite()">
+        ENG
+      </button> -->
+      <!-- <a href="#" class="btn-milk" *ngIf="screenSize[1280]">
+        Залишити відгук
+      </a> -->
+      <a [routerLink]="[ '/favorites' ]">
+        <svg class="svg svg_hover">
+          <use class="svg__bg" href="../../../assets/images/icon_sprite_main.svg#bg"></use>
+          <use class="svg__img" href="../../../assets/images/icon_sprite_main.svg#heart"></use>
+        </svg>
+      </a>
+      <div class="phone" *ngIf="screenSize[768]">
+        <button type="button">
+          <svg class="svg">
+            <use class="svg__bg" href="../../../assets/images/icon_sprite_main.svg#bg"></use>
+            <use class="svg__img" href="../../../assets/images/icon_sprite_main.svg#phone"></use>
+          </svg>
+        </button>
+        <div class="popup">
+          <button type="button" class="popup__tel">
+            +38 (067) 792 90 90
+          </button>
+          <p class="text">
+            Працюємо Пн - Нд з
+            <b>09:00</b> до <b>22:00</b>
+          </p>
+        </div>
+      </div>
+      <app-auth></app-auth>
+      <button type="button" (click)="toggleBurgerMenu()">
+        <svg class="svg svg_hover">
+          <use class="svg__bg" href="../../../assets/images/icon_sprite_main.svg#bg"></use>
+          <use class="svg__img" href="../../../assets/images/icon_sprite_main.svg#menu"></use>
+        </svg>
+      </button>
+    </div>
+
+  </header>
+</div>
+
+<div class="overlay" *ngIf="burgerMenuIsOpen">
+  <div class="menu" [ngClass]="{'menu-active': burgerMenuIsOpen}">
+    <button 
+      class="menu__close" 
+      (click)="toggleBurgerMenu()"
+    >
+      <svg class="menu__svg">
+        <use href="../../../assets/images/icon_cross.svg#cross"></use>
+      </svg>
+    </button>
+    <div class="menu__block">
+      <a [routerLink]="[ '/about' ]" class="menu__link" (click)="toggleBurgerMenu()">
+        Про Томатіну
+      </a>
+      <!-- <a href="#" class="menu__link">Збери сам</a> -->
+      <a [routerLink]="[ '/delivery' ]" class="menu__link" (click)="toggleBurgerMenu()">
+        Доставка
+      </a>
+      <a [routerLink]="[ '/contact' ]" class="menu__link" (click)="toggleBurgerMenu()">
+        Контакти
+      </a>
+      <!-- <a [routerLink]="[ '/cabinet' ]" class="menu__link" (click)="toggleBurgerMenu()">
+        Кабінет
+      </a> -->
+      <!-- <a [routerLink]="[ '/admin' ]" class="menu__link" (click)="toggleBurgerMenu()">
+        Адмін
+      </a> -->
+    </div>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="changeDeliveryIsOpen">
+  <div class="dialog">
+    <h3 class="dialog__title">
+      Раді бачити вас на нашому сайті!
+      <span class="green">Будь ласка, оберіть спосіб отримання замовлення</span>
+    </h3>
+    <div class="delivery">
+      <button class="delivery__btn" (click)="changeDelivery('by courier')">
+        <img src="../../../assets/images/dialog_delivery1.svg" class="delivery__img" alt="Доставка кур'єром">
+        <span class="delivery__span">Доставка кур'єром</span>
+      </button>
+      <span class="delivery__or">або</span>
+      <button class="delivery__btn" (click)="changeDelivery('self pickup')">
+        <img src="../../../assets/images/dialog_delivery2.svg" class="delivery__img" alt="Самовивіз">
+        <span class="delivery__span">Самовивіз</span>
+      </button>
+    </div>
+  </div>
+</div>

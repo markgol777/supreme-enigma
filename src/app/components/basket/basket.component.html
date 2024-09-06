@@ -1,0 +1,107 @@
+<button 
+  *ngIf="totalCount"
+  class="info-b" 
+  (click)="openBasket()"
+>
+  <svg class="info-b__bg">
+    <use href="../../../assets/images/basket_sprite.svg#bg"></use>
+  </svg>
+  <div class="info-b__block">
+    <svg class="info-b__img">
+      <use href="../../../assets/images/basket_sprite.svg#basket"></use>
+    </svg>
+    <span class="info-b__count">{{ totalCount }}</span>
+    <p class="info-b__sum">
+      <b>{{ totalPrice }}</b>
+      <br>
+       грн
+    </p>
+  </div>
+</button>
+
+<div class="overlay" *ngIf="basketIsOpen">
+  <div class="basket">
+
+    <header class="basket__header">
+      <h2 class="basket__h2">Кошик</h2>
+      <div class="basket__top">
+        <button 
+          class="btn-link" 
+          (click)="clearBasket()"
+        >
+          Очистити кошик
+        </button>
+        <button (click)="closeBasket()">
+          <svg class="basket__close">
+            <use href="../../../assets/images/icon_cross.svg#cross"></use>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="basket__main">
+      <div 
+        class="card" 
+        *ngFor="let product of basket"
+      >
+        <div class="card__img-div">
+          <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+            <img 
+              [src]="product.imagePath" 
+              [alt]="product.name" 
+              class="card__img"
+            >
+          </a>
+        </div>
+        <div>
+          <a [routerLink]="[ '/product/'+product.category.path, product.id ]">
+            <h3 class="card__name">{{ product.name }}</h3>
+          </a>
+          <div>
+            <button 
+              class="btn-milk btn-plus" 
+              (click)="changeCount(product, false)"
+            >-</button>
+            <input 
+              type="text" 
+              class="card__count" 
+              [value]="product.count" 
+              readonly
+            >
+            <button 
+              class="btn-milk btn-plus" 
+              (click)="changeCount(product, true)"
+            >+</button>
+          </div>
+        </div>
+        <div class="card__end">
+          <button (click)="deleteFromBasket(product)">
+            <svg class="card__delete">
+              <use href="../../../assets/images/icon_cross.svg#cross"></use>
+            </svg>
+          </button>
+          <p class="card__price">
+            <b>{{ product.count * product.price }}</b>
+             грн
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="basket__footer">
+      <p class="basket__p">
+        Сума:
+        <span class="basket__sum">{{ totalPrice }}</span>
+         грн
+      </p>
+      <a 
+        class="btn-green" 
+        [routerLink]="[ '/checkout' ]" 
+        (click)="closeBasket()"
+      >
+        Оформити замовлення
+      </a>
+    </footer>
+  </div>
+</div>
+
